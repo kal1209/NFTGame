@@ -1,21 +1,15 @@
 import {
-  Avatar, Box, Button, Center, Flex, Link, Menu, HStack, Spacer,
-  MenuButton, MenuDivider, MenuItem, MenuList, Stack, Text, useColorMode, useColorModeValue, useDisclosure
+  Button, Flex, HStack, Spacer,
+  Text, useColorMode
 } from '@chakra-ui/react';
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
-import { AiFillSound } from 'react-icons/ai';
 
-import { 
-  getConnection,
-  getProgram,
-  getBetPda,
-  getConfigPda,
-  getFeePda
+import {
+  getConnection
 } from '../lib/utils';
 
-import { useWallet, useAnchorWallet } from '@solana/wallet-adapter-react';
-import * as web3 from "@solana/web3.js";
+import { useWallet } from '@solana/wallet-adapter-react';
 
 // @ts-ignore
 const CLUSTER = process.env.NEXT_PUBLIC_NODE_CLUSTER as string;
@@ -27,7 +21,7 @@ interface NavBarProps {
 }
 
 
-export const NavBar: React.FunctionComponent<NavBarProps> = ({reload}) => {
+export const NavBar: React.FunctionComponent<NavBarProps> = ({ reload }) => {
   const [balance, setBalance] = useState<string>('NaN');
   const { publicKey, signTransaction, connected, disconnect } = useWallet();
   const { colorMode, toggleColorMode } = useColorMode();

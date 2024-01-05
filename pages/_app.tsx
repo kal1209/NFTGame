@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider, Flex } from '@chakra-ui/react'
-import React, { FC, useMemo } from 'react';
+import { ChakraProvider } from '@chakra-ui/react'
+import React, { useMemo } from 'react';
 
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
@@ -11,15 +11,11 @@ import {
   PhantomWalletAdapter,
   SlopeWalletAdapter,
   SolflareWalletAdapter,
-  SolletExtensionWalletAdapter,
-  SolletWalletAdapter,
   TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
 import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton
+  WalletModalProvider
 } from '@solana/wallet-adapter-react-ui';
 
 
@@ -27,11 +23,10 @@ import {
 import { extendTheme } from '@chakra-ui/react'
 
 const breakpoints = {
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
-  '2xl': '1440px',
+  sm: '393px',
+  md: '744px',
+  lg: '1024px',
+  xl: '1440px',
 }
 
 const styles = {
@@ -50,8 +45,50 @@ const fonts = {
   }
 }
 
-// 3. Extend the theme
-const theme = extendTheme({ breakpoints, styles, fonts })
+const colors = {
+  body: {
+    text: '#ffffff',
+  },
+  primary: {
+    50: "#FFF0F0"
+  }
+}
+
+const semanticTokens = {
+  colors: {
+    "chakra-body-text": {
+      _light: "white",
+      _dark: "white",
+    },
+  }
+}
+
+const components = {
+  Text: {
+    baseStyle: {
+      fontWeight: '400',
+      lineHeight: '27.5px',
+      fontSize: '16px',
+    },
+  },
+  Button: {
+    baseStyle: {
+      background: 'none',
+      bgGradient: 'linear(to-r, #0B58EC 3.85%, #EC0BD5 100%)',
+      borderRadius: '23px',
+      _hover: {
+        background: 'none',
+        bgGradient: 'linear(to-r, #0B58EC 3.85%, #EC0BD5 100%)',
+        boxShadow: '0px 0px 39px 7px rgba(89, 0, 235, 0.78)',
+      }
+    },
+  }
+};
+
+const theme = extendTheme({
+  breakpoints, styles, fonts, colors, semanticTokens, components
+})
+
 
 
 function MyApp({ Component, pageProps }: AppProps) {

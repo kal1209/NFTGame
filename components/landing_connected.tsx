@@ -273,30 +273,6 @@ export const LandingConnected: React.FunctionComponent<LandingStateProps> = (pro
     <Box>
       <Flex justifyContent={'center'}>
         <VStack>
-          <Box boxSize={'200px'}>
-            <Image src='/coin.png' alt='coin' />
-          </Box>
-
-          <Box mb={16}>
-            {
-              publicKey
-                ?
-                <VStack spacing={4} padding={4} background={bgColor}>
-                  <BetChoose choice={props.bet} set={props.setBet} />
-                  <BetAmount amount={props.betAmount} set={props.setBetAmount} />
-
-                  <Button
-                    w='full'
-                    colorScheme="green"
-                    isLoading={initBet}
-                    onClick={() => endToEndBet(props.bet, props.betAmount)}
-                  >
-                    Play Double or Nothing
-                  </Button>
-                </VStack>
-                : <Wallet />
-            }
-          </Box>
         </VStack>
       </Flex>
     </Box>

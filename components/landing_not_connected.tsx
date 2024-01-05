@@ -39,11 +39,6 @@ export const LandingNotConnected: React.FunctionComponent<LandingStateProps> = (
   return (
     <Flex justifyContent={'center'}>
       <VStack>
-        <Box boxSize={'200px'}>
-          <Image src='/coin.png' alt='coin' />
-        </Box>
-
-        <Wallet />
       </VStack>
     </Flex>
 
